@@ -8,15 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // 1. Tabel Tanaman
-        Schema::create('tanaman', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('sektor');
-            $table->integer('jumlah')->default(0);
-            $table->string('status')->default('Sehat'); // Sehat, Hama, Butuh Air
-            $table->timestamps();
-        });
+        // Bagian tabel tanaman dilewati karena sudah ada dari sisi Kotlin
 
         // 2. Tabel Lahan
         Schema::create('lahan', function (Blueprint $table) {
@@ -65,6 +57,6 @@ return new class extends Migration
         Schema::dropIfExists('sensor_telemetri');
         Schema::dropIfExists('tugas_harian');
         Schema::dropIfExists('lahan');
-        Schema::dropIfExists('tanaman');
+        // Jangan hapus tanaman di sini agar data Kotlin tetap aman
     }
 };
